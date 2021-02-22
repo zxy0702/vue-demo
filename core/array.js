@@ -28,7 +28,6 @@ methods.forEach((method) => {
         break;
     }
     if (inserted) ob.observerArray(args);
-    console.log("数组的dep", ob);
     ob.dep.notify();
     return result;
   });

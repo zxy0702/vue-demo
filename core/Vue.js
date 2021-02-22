@@ -15,7 +15,6 @@ export default class Vue {
       document.getElementById("name").innerHTML = val;
     });
     new Watch(this, "data.arr", function (val) {
-      console.log("收到了了了", val);
       document.getElementById("array").innerHTML = val;
     });
   }
@@ -23,9 +22,7 @@ export default class Vue {
 
 class Observer {
   constructor(value) {
-    console.log("new Observer", value);
     this.dep = new Dep();
-    console.log("创建dep id", this.dep.id);
     this.value = value;
     if (Array.isArray(value)) {
       def(value, "__ob__", this);
@@ -62,10 +59,8 @@ function defineReactive(obj, key, value) {
         if (childObj) {
           childObj.dep.depend();
         }
-        console.log("childObj", childObj && childObj.dep.id);
         if (Array.isArray(value)) {
-          value && value.__ob__ && value.__ob__.dep.depend();
-          // dependArray(value);
+          dependArray(value);
         }
       }
 

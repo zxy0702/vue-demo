@@ -16,7 +16,6 @@ export default class dep {
     }
   }
   depend() {
-    console.log("subs", this, window.target);
     if (window.target) {
       if (this.subs.indexOf(window.target) === -1) {
         this.addSub(window.target);
